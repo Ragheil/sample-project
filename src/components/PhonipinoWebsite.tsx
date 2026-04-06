@@ -78,7 +78,7 @@ export default function PhonipinoWebsite() {
 
             <div className="hero-visual">
               <div className="hero-media-card">
-                <img src="/hero-team.jpg" alt="Phonipino team" className="hero-media" />
+                <img src="/logo.jpg" alt="Phonipino team" className="hero-media" />
                 <div className="hero-media-overlay">
                   <div className="hero-panel-title">Enterprise-Ready Outsourcing</div>
                   <div className="hero-panel-text">
