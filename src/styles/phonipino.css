@@ -736,7 +736,7 @@ textarea {
 .floating-chat-trigger {
   position: fixed;
   right: 22px;
-  bottom: 22px;
+  bottom: 75px;
   z-index: 85;
   display: inline-flex;
   align-items: center;
@@ -938,6 +938,10 @@ textarea {
   .careers-actions {
     justify-content: flex-start;
   }
+
+  .floating-chat-trigger {
+    bottom: 22px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1018,6 +1022,10 @@ textarea {
 
   .floating-chat-trigger {
     right: 12px;
-    bottom: 12px;
+    bottom: 120px;
+  }
+
+  .floating-chat-trigger {
+    bottom: 22px;
   }
 }
