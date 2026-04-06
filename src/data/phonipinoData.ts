@@ -175,7 +175,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Core Member 01",
     role: "Operations Leadership",
-    image: "/core-team.jpg",
+    image: "/core-team1.jpg",
   },
   {
     name: "Core Member 02",

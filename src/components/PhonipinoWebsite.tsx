@@ -164,9 +164,12 @@ export default function PhonipinoWebsite() {
 
             <div className="team-grid margin-top-lg">
               {teamMembers.map((member) => (
-                <article className="team-card" key={member.name}>
-                  <img src={member.image} alt={member.name} className="team-image" />
-                  <div className="team-content">
+                <article className="team-card overlap-team-card" key={member.name}>
+                  <div className="team-image-overlap-wrap">
+                    <img src={member.image} alt={member.name} className="team-image-overlap" />
+                  </div>
+
+                  <div className="team-content overlap-team-content">
                     <h3 className="card-title">{member.name}</h3>
                     <p className="card-text">{member.role}</p>
                   </div>
