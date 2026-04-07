@@ -11,6 +11,7 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@vercel/analytics": "^2.0.1",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "lucide-react": "^1.7.0",
@@ -32,6 +33,11 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@vercel/analytics/react$": "<rootDir>/src/__mocks__/@vercel-analytics-react.ts"
+    }
   },
   "browserslist": {
     "production": [
