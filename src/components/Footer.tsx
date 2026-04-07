@@ -9,7 +9,7 @@ export default function Footer({ year, navItems }: FooterProps) {
   return (
     <footer className="footer">
       <div className="container footer-inner">
-        <div>© {year} Phonipino Corp. All rights reserved.</div>
+        <div>© 2014–{new Date().getFullYear()} Phonipino Corp. All rights reserved.</div>
 
         <div className="footer-links">
           {navItems.map((item) => (

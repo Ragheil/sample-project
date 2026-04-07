@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import SectionHeading from "./SectionHeading";
 import InfoCard from "./InfoCard";
 import FloatingFaqChatbot from "./FloatingFaqChatbot";
-
+import ScrollToTopButton from "./ScrollToTopButton";
 import {
   navItems,
   services,
@@ -20,6 +20,65 @@ import {
 export default function PhonipinoWebsite() {
   const [menuOpen, setMenuOpen] = useState(false);
   const year = useMemo(() => new Date().getFullYear(), []);
+  const [heroLogoFocus, setHeroLogoFocus] = useState(false);
+
+
+const [form, setForm] = useState({
+  firstName: "",
+  lastName: "",
+  email: "",
+  company: "",
+  message: "",
+});
+
+const [loading, setLoading] = useState(false);
+
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = async () => {
+  setLoading(true);
+
+  const endpoint =
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000/send-email"
+      : "/api/send-email";
+
+  try {
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const data: { message?: string } | null = await res.json().catch(() => null);
+
+    if (!res.ok) {
+      throw new Error(data?.message || "Failed to send inquiry");
+    }
+
+    alert(data?.message || "Inquiry sent!");
+
+    setForm({
+      firstName: "",
+      lastName: "",
+      email: "",
+      company: "",
+      message: "",
+    });
+  } catch (err) {
+    const errorMessage =
+      err instanceof Error ? err.message : "Failed to send inquiry";
+    alert(errorMessage);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
   return (
     <div className="page">
@@ -32,7 +91,7 @@ export default function PhonipinoWebsite() {
         <section id="home" className="hero ultra-section">
           <div className="shell shell-wide hero-grid">
             <div className="hero-copy">
-              <div className="badge">★ Black, White, and Red Enterprise Presentation</div>
+              {/* <div className="badge">★ Black, White, and Red Enterprise Presentation</div> */}
 
               <h1 className="hero-title">
                 Grow your business with expert outsourcing solutions built for performance.
@@ -49,6 +108,11 @@ export default function PhonipinoWebsite() {
                 We are presented here as registered in both the United States
                 and the Philippines, with a service model designed for modern
                 local and global clients.
+              </p>
+
+              <p className="hero-founded">
+                Established in <strong>2014</strong> — delivering consistent outsourcing
+                excellence for over a decade.
               </p>
 
               <div className="hero-actions">
@@ -76,18 +140,22 @@ export default function PhonipinoWebsite() {
               </div>
             </div>
 
-            <div className="hero-visual">
-              <div className="hero-media-card">
-                <img src="/logo.jpg" alt="Phonipino team" className="hero-media" />
-                <div className="hero-media-overlay">
-                  <div className="hero-panel-title">Enterprise-Ready Outsourcing</div>
-                  <div className="hero-panel-text">
-                    Sales, support, culture, hiring, and service excellence in one
-                    modern brand experience.
-                  </div>
-                </div>
-              </div>
-            </div>
+<div className="hero-visual">
+  <div
+    className={`hero-media-card hero-logo-card ${heroLogoFocus ? "hero-media-card-active" : ""}`}
+    onClick={() => setHeroLogoFocus((prev) => !prev)}
+  >
+    <img src="/logo.jpg" alt="Phonipino logo" className="hero-media hero-logo-image" />
+
+    <div className="hero-media-overlay hero-logo-overlay">
+      <div className="hero-panel-title">Enterprise-Ready Outsourcing</div>
+      <div className="hero-panel-text">
+        Sales, support, culture, hiring, and service excellence in one
+        modern brand experience.
+      </div>
+    </div>
+  </div>
+</div>
           </div>
         </section>
 
@@ -227,105 +295,156 @@ export default function PhonipinoWebsite() {
           </div>
         </section>
 
-        <section id="careers" className="section section-alt ultra-section">
-          <div className="shell shell-wide careers-section-shell">
-            <div className="careers-top">
-              <div>
-                <div className="eyebrow">Careers</div>
-                <h2 className="section-title">
-                  We’re expanding and actively hiring.
-                </h2>
-                <p className="section-text">
-                  Applicants must send their resume or CV to your recruitment email.
-                  Replace the sample address below with your real one.
-                </p>
-                <p className="resume-note">
-                  Required in the email: full name, desired position, phone number,
-                  and attached resume/CV.
-                </p>
-              </div>
-
-              <div className="careers-actions">
-                <a
-                  className="btn btn-primary"
-                  href="mailto:your-email@example.com?subject=Application%20for%20Phonipino%20Corp."
-                >
-                  Send Resume / CV
-                </a>
-              </div>
+      <section id="careers" className="section section-alt ultra-section">
+        <div className="shell shell-wide careers-section-shell">
+          <div className="careers-top">
+            <div>
+              <div className="eyebrow">Careers</div>
+              <h2 className="section-title">
+                We’re expanding and actively hiring.
+              </h2>
+              <p className="section-text">
+                We are currently hiring Agents and Team Leaders. All applicants must
+                send their resume or CV to <strong>ragheil123@gmail.com</strong>.
+              </p>
+              <p className="resume-note">
+                <strong>PDF only:</strong> Please submit your resume or CV in PDF
+                format only. Include your full name, desired position, and contact
+                number in the email.
+              </p>
             </div>
 
-            <div className="career-role-grid">
-              <article className="career-role-card">
-                <div className="career-role-top">
-                  <div>
-                    <h3 className="career-role-title">Agents</h3>
-                    <div className="career-role-subtitle">
-                      Sales, support, and outreach roles for fast-growing operations.
-                    </div>
-                  </div>
-                  <div className="role-badge">30 positions left</div>
-                </div>
-
-                <div className="role-meta">
-                  <div className="role-meta-chip">Full-time</div>
-                  <div className="role-meta-chip">On-site / Hybrid / Remote</div>
-                  <div className="role-meta-chip">Entry to Mid Level</div>
-                </div>
-
-                <ul className="role-list">
-                  <li>Strong communication skills</li>
-                  <li>Customer-facing confidence</li>
-                  <li>Sales or support experience is a plus</li>
-                  <li>Willingness to work shifting schedules if needed</li>
-                </ul>
-
-                <div className="role-cta">
-                  <a
-                    className="btn btn-primary"
-                    href="mailto:your-email@example.com?subject=Application%20for%20Agent%20Position"
-                  >
-                    Apply as Agent
-                  </a>
-                </div>
-              </article>
-
-              <article className="career-role-card">
-                <div className="career-role-top">
-                  <div>
-                    <h3 className="career-role-title">Team Leaders</h3>
-                    <div className="career-role-subtitle">
-                      Leadership roles focused on coaching, performance, and team guidance.
-                    </div>
-                  </div>
-                  <div className="role-badge">10 positions left</div>
-                </div>
-
-                <div className="role-meta">
-                  <div className="role-meta-chip">Full-time</div>
-                  <div className="role-meta-chip">Leadership Role</div>
-                  <div className="role-meta-chip">Operations / Sales / Support</div>
-                </div>
-
-                <ul className="role-list">
-                  <li>Leadership or supervisory experience preferred</li>
-                  <li>Ability to coach and motivate teams</li>
-                  <li>Strong reporting and communication skills</li>
-                  <li>Can help drive accountability and performance</li>
-                </ul>
-
-                <div className="role-cta">
-                  <a
-                    className="btn btn-primary"
-                    href="mailto:your-email@example.com?subject=Application%20for%20Team%20Leader%20Position"
-                  >
-                    Apply as Team Leader
-                  </a>
-                </div>
-              </article>
+            <div className="careers-actions">
+              <a
+                className="btn btn-primary"
+                href="mailto:ragheil123@gmail.com?subject=Application%20for%20Phonipino%20Corp.&body=Full%20Name%3A%0D%0ADesired%20Position%3A%0D%0AContact%20Number%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20or%20CV%20in%20PDF%20format%20only."
+              >
+                Send Resume / CV
+              </a>
             </div>
           </div>
-        </section>
+
+          <div className="career-role-grid">
+            <article className="career-role-card">
+              <div className="career-role-top">
+                <div>
+                  <h3 className="career-role-title">Call Center Officers</h3>
+                  <div className="career-role-subtitle">
+                    Sales, support, and outreach roles for fast-growing operations.
+                  </div>
+                </div>
+                <div className="role-badge">30 positions left</div>
+              </div>
+              
+
+              <div className="role-meta">
+                <div className="role-meta-chip">Full-time</div>
+                <div className="role-meta-chip">On-site</div>
+                <div className="role-meta-chip">Entry to Mid Level</div>
+              </div>
+
+              <ul className="role-list">
+                <li>Strong communication skills</li>
+                <li>Customer-facing confidence</li>
+                <li>Sales or support experience is a plus</li>
+                <li>Willingness to work shifting schedules if needed</li>
+              </ul>
+
+              <p className="resume-note">
+                Resume/CV submissions are accepted in <strong>PDF format only</strong>.
+              </p>
+
+              <div className="role-cta">
+                <a
+                  className="btn btn-primary"
+                  href="mailto:ragheil123@gmail.com?subject=Application%20for%20Agent%20Position&body=Full%20Name%3A%0D%0ADesired%20Position%3A%20Agent%0D%0AContact%20Number%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20or%20CV%20in%20PDF%20format%20only."
+                >
+                  Apply as Agent
+                </a>
+              </div>
+            </article>
+
+
+          <article className="career-role-card">
+            <div className="career-role-top">
+              <div>
+                <h3 className="career-role-title">IT Staff</h3>
+                <div className="career-role-subtitle">
+                  Hiring IT personnel for technical support, system maintenance, and network operations.
+                </div>
+              </div>
+              <div className="role-badge">5 positions left</div>
+            </div>
+            
+
+            <div className="role-meta">
+              <div className="role-meta-chip">Full-time</div>
+              <div className="role-meta-chip">On-site</div>
+              <div className="role-meta-chip">Entry to Mid Level</div>
+            </div>
+
+            <ul className="role-list">
+              <li>Basic troubleshooting skills</li>
+              <li>Proven IT experience</li>
+              <li>Basic networking knowledge</li>
+              <li>Familiarity with common software and hardware troubleshooting</li>
+            </ul>
+
+            <p className="resume-note">
+              Resume/CV submissions are accepted in <strong>PDF format only</strong>.
+            </p>
+
+            <div className="role-cta">
+              <a
+                className="btn btn-primary"
+                href="mailto:ragheil123@gmail.com?subject=Application%20for%20IT%20Staff%20Position&body=Full%20Name%3A%0D%0ADesired%20Position%3A%20IT%20Staff%0D%0AContact%20Number%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20or%20CV%20in%20PDF%20format%20only."
+              >
+                Apply as IT Staff
+              </a>
+            </div>
+          </article>
+            
+
+            <article className="career-role-card">
+              <div className="career-role-top">
+                <div>
+                  <h3 className="career-role-title">Team Leaders</h3>
+                  <div className="career-role-subtitle">
+                    Leadership roles focused on coaching, performance, and team guidance.
+                  </div>
+                </div>
+                <div className="role-badge">3 positions left</div>
+              </div>
+
+              <div className="role-meta">
+                <div className="role-meta-chip">Full-time</div>
+                <div className="role-meta-chip">Leadership Role</div>
+                <div className="role-meta-chip">Operations / Sales / Support</div>
+              </div>
+
+              <ul className="role-list">
+                <li>Leadership or supervisory experience preferred</li>
+                <li>Ability to coach and motivate teams</li>
+                <li>Strong reporting and communication skills</li>
+                <li>Can help drive accountability and performance</li>
+              </ul>
+
+              <p className="resume-note">
+                Resume/CV submissions are accepted in <strong>PDF format only</strong>.
+              </p>
+
+              <div className="role-cta">
+                <a
+                  className="btn btn-primary"
+                  href="mailto:ragheil123@gmail.com?subject=Application%20for%20Team%20Leader%20Position&body=Full%20Name%3A%0D%0ADesired%20Position%3A%20Team%20Leader%0D%0AContact%20Number%3A%0D%0A%0D%0APlease%20attach%20your%20resume%20or%20CV%20in%20PDF%20format%20only."
+                >
+                  Apply as Team Leader
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
         <section id="contact" className="section ultra-section">
           <div className="shell shell-wide two-col-layout">
@@ -347,30 +466,57 @@ export default function PhonipinoWebsite() {
               <div className="form-grid">
                 <div className="field">
                   <label>First Name</label>
-                  <input placeholder="John" />
+<input
+  name="firstName"
+  value={form.firstName}
+  onChange={handleChange}
+  placeholder="John"
+/>
                 </div>
                 <div className="field">
                   <label>Last Name</label>
-                  <input placeholder="Doe" />
-                </div>
+<input
+  name="lastName"
+  value={form.lastName}
+  onChange={handleChange}
+  placeholder="Doe"
+/>                </div>
                 <div className="field full">
                   <label>Email</label>
-                  <input placeholder="name@company.com" />
-                </div>
+<input
+  name="email"
+  value={form.email}
+  onChange={handleChange}
+  placeholder="name@company.com"
+/>                </div>
                 <div className="field full">
                   <label>Company</label>
-                  <input placeholder="Your company name" />
-                </div>
+<input
+  name="company"
+  value={form.company}
+  onChange={handleChange}
+  placeholder="Your company name"
+/>                </div>
                 <div className="field full">
                   <label>Message</label>
-                  <textarea placeholder="Tell us how we can help" rows={5} />
-                </div>
+<textarea
+  name="message"
+  value={form.message}
+  onChange={handleChange}
+  placeholder="Tell us how we can help"
+  rows={5}
+/>                </div>
               </div>
 
               <div className="margin-top-md">
-                <button type="button" className="btn btn-primary">
-                  Send Inquiry
-                </button>
+<button
+  type="button"
+  className="btn btn-primary"
+  onClick={handleSubmit}
+  disabled={loading}
+>
+  {loading ? "Sending..." : "Send Inquiry"}
+</button>
               </div>
             </div>
           </div>
@@ -379,6 +525,7 @@ export default function PhonipinoWebsite() {
 
       <Footer year={year} navItems={navItems} />
       <FloatingFaqChatbot faqs={faqs} />
+      <ScrollToTopButton />
     </div>
   );
 }
