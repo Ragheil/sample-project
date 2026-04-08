@@ -15,7 +15,7 @@ import {
   faqs,
   showcaseItems,
   teamMembers,
-} from "../data/phonipinoData";
+} from "../data/siteContent";
 
 export default function PhonipinoWebsite() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -85,7 +85,7 @@ const handleSubmit = async () => {
       <div className="ambient-one" />
       <div className="ambient-two" />
 
-      <Header navItems={navItems} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Header navItems={navItems} />
 
       <main>
         <section id="home" className="hero ultra-section">
@@ -225,7 +225,7 @@ const handleSubmit = async () => {
         <section id="leadership" className="section ultra-section">
           <div className="shell shell-wide">
             <SectionHeading
-              eyebrow="Core Members"
+              eyebrow=" Phonipino Corp. Board of Directors"
               title="Present the people behind Phonipino Corp."
               text="Leadership and key members now sit inside a wider flexible grid for big monitors."
             />
@@ -446,81 +446,163 @@ const handleSubmit = async () => {
         </div>
       </section>
 
-        <section id="contact" className="section ultra-section">
-          <div className="shell shell-wide two-col-layout">
-            <div>
-              <SectionHeading
-                eyebrow="Contact Us"
-                title="Let’s discuss your outsourcing, support, or recruitment needs."
-                text="This section stays wide and balanced instead of sitting inside a narrow centered box."
-              />
+ <section id="contact" className="section ultra-section">
+  <div className="shell shell-wide">
+    <div className="contact-clean-grid">
+      <div className="contact-left-stack">
+        <div className="contact-info-panel">
+          <SectionHeading
+            eyebrow="Contact Us"
+            title="Let’s discuss your outsourcing, support, or recruitment needs."
+            text="Visit Phonipino Corp. at our office in Kauswagan, or send us an inquiry through the contact form."
+          />
 
-              <div className="contact-list">
-                <div className="contact-item"><span>✉</span> hello@phonipino.com</div>
-                <div className="contact-item"><span>☎</span> +63 000 000 0000</div>
-                <div className="contact-item"><span>📍</span> United States and Philippines</div>
-              </div>
+          <div className="contact-list contact-list-strong">
+            <div className="contact-item">
+              <span>✉</span>
+              <span>hello@phonipino.com</span>
             </div>
-
-            <div className="contact-card">
-              <div className="form-grid">
-                <div className="field">
-                  <label>First Name</label>
-<input
-  name="firstName"
-  value={form.firstName}
-  onChange={handleChange}
-  placeholder="John"
-/>
-                </div>
-                <div className="field">
-                  <label>Last Name</label>
-<input
-  name="lastName"
-  value={form.lastName}
-  onChange={handleChange}
-  placeholder="Doe"
-/>                </div>
-                <div className="field full">
-                  <label>Email</label>
-<input
-  name="email"
-  value={form.email}
-  onChange={handleChange}
-  placeholder="name@company.com"
-/>                </div>
-                <div className="field full">
-                  <label>Company</label>
-<input
-  name="company"
-  value={form.company}
-  onChange={handleChange}
-  placeholder="Your company name"
-/>                </div>
-                <div className="field full">
-                  <label>Message</label>
-<textarea
-  name="message"
-  value={form.message}
-  onChange={handleChange}
-  placeholder="Tell us how we can help"
-  rows={5}
-/>                </div>
-              </div>
-
-              <div className="margin-top-md">
-<button
-  type="button"
-  className="btn btn-primary"
-  onClick={handleSubmit}
-  disabled={loading}
->
-  {loading ? "Sending..." : "Send Inquiry"}
-</button>
-              </div>
+            <div className="contact-item">
+              <span>☎</span>
+              <span>+63 000 000 0000</span>
+            </div>
+            <div className="contact-item">
+              <span>📍</span>
+              <span>
+                3F HCL Premier Building, National Highway, Kauswagan, beside
+                Savemore Supermarket
+              </span>
+            </div>
+            <div className="contact-item">
+              <span>🌍</span>
+              <span>Registered in the United States and the Philippines</span>
             </div>
           </div>
-        </section>
+        </div>
+
+        <div className="office-showcase-card">
+          <img
+            src="/building-front.jpg"
+            alt="Phonipino office front"
+            className="office-showcase-image"
+          />
+          <div className="office-showcase-content">
+            <div className="office-badge">Office Front</div>
+            <h3 className="card-title">Phonipino Corp. Building</h3>
+            <p className="card-text">
+              3F HCL Premier Building, National Highway, Kauswagan, beside
+              Savemore Supermarket
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="contact-right-stack">
+        <div className="contact-card contact-form-card">
+          <div className="form-grid">
+            <div className="field">
+              <label>First Name</label>
+              <input
+                name="firstName"
+                value={form.firstName}
+                onChange={handleChange}
+                placeholder="John"
+              />
+            </div>
+
+            <div className="field">
+              <label>Last Name</label>
+              <input
+                name="lastName"
+                value={form.lastName}
+                onChange={handleChange}
+                placeholder="Doe"
+              />
+            </div>
+
+            <div className="field full">
+              <label>Email</label>
+              <input
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="name@company.com"
+              />
+            </div>
+
+            <div className="field full">
+              <label>Company</label>
+              <input
+                name="company"
+                value={form.company}
+                onChange={handleChange}
+                placeholder="Your company name"
+              />
+            </div>
+
+            <div className="field full">
+              <label>Message</label>
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                placeholder="Tell us how we can help"
+                rows={5}
+              />
+            </div>
+          </div>
+
+          <div className="margin-top-md">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={handleSubmit}
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Send Inquiry"}
+            </button>
+          </div>
+        </div>
+
+        <div className="map-card map-card-clean">
+          <div className="map-card-header">
+            <div>
+              <div className="office-badge">Location</div>
+              <h3 className="card-title">Find Us on the Map</h3>
+            </div>
+
+            <a
+              className="btn btn-secondary btn-sm"
+              href="https://maps.app.goo.gl/uyUrekAjcVeQP3GW9"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open in Maps
+            </a>
+          </div>
+
+          <div className="map-frame-wrap clean-map-wrap">
+            <iframe
+              title="Phonipino Office Map"
+              className="map-frame clean-map-frame"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=3F%20HCL%20Premier%20Building%20National%20Highway%20Kauswagan%20beside%20Savemore%20Supermarket&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            />
+          </div>
+
+          <div className="map-card-content">
+            <p className="card-text">
+              3F HCL Premier Building, National Highway, Kauswagan, beside
+              Savemore Supermarket
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </main>
 
       <Footer year={year} navItems={navItems} />

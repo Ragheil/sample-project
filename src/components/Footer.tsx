@@ -1,4 +1,5 @@
-import { NavItem } from "../data/phonipinoData";
+import { NavLink } from "react-router-dom";
+import { NavItem } from "../data/siteContent";
 
 type FooterProps = {
   year: number;
@@ -13,9 +14,9 @@ export default function Footer({ year, navItems }: FooterProps) {
 
         <div className="footer-links">
           {navItems.map((item) => (
-            <a key={item.label} href={item.href}>
+            <NavLink key={item.label} to={item.path} end={item.path === "/"}>
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </div>
       </div>

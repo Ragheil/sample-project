@@ -1,5 +1,6 @@
-import PhonipinoWebsite from "./components/PhonipinoWebsite";
+import "./styles/phonipino.css";
+import AppRouter from "./router/AppRouter";
 
 export default function App() {
-  return <PhonipinoWebsite />;
+  return <AppRouter />;
 }

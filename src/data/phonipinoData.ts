@@ -173,23 +173,28 @@ export const showcaseItems: ShowcaseItem[] = [
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Core Member 01",
-    role: "Operations Leadership",
-    image: "/core-team1.jpg",
+    name: "JOR-EL INSO",
+    role: "CHIEF OPERATIONS OFFICER",
+    image: "/board-1.jpg",
   },
   {
-    name: "Core Member 02",
-    role: "Client Success",
-    image: "/core-team.jpg",
+    name: "MARILYN ORBE INSO",
+    role: "CHIEF EXECUTIVE OFFICER",
+    image: "/board-2.jpg",
   },
   {
-    name: "Core Member 03",
-    role: "Training & Quality",
-    image: "/core-team.jpg",
+    name: "JULIELYN ORBE",
+    role: "HUMAN RESOURCE OFFICER",
+    image: "/board-3.jpg",
   },
   {
-    name: "Core Member 04",
-    role: "Growth & Recruitment",
-    image: "/core-team.jpg",
+    name: "ATTY. KAREN SEMILLANO",
+    role: "CHIEF MARKETING OFFICER",
+    image: "/board-4.jpg",
+  },
+    {
+    name: "ATTY. MIPPS SEMILLANO",
+    role: "CHIEF FINANCE OFFICER",
+    image: "/board-5.jpg",
   },
 ];
