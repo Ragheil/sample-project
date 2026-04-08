@@ -8,6 +8,8 @@ import {
   officeMapLink,
   publicContactEmail,
   publicContactPhone,
+  socialPlatforms,
+  SocialPlatform,
 } from "../data/siteContent";
 
 type ContactFormState = {
@@ -30,6 +32,111 @@ const initialFormState: ContactFormState = {
   company: "",
   message: "",
 };
+
+function SocialPlatformIcon({ icon }: { icon: SocialPlatform["icon"] }) {
+  switch (icon) {
+    case "facebook":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M13.6 20v-6.3h2.2l.4-2.8h-2.6V9.1c0-.8.2-1.4 1.4-1.4H16V5.2c-.3 0-1.2-.2-2.3-.2-2.3 0-3.8 1.4-3.8 4v1.9H7.6v2.8h2.3V20h3.7Z"
+          />
+        </svg>
+      );
+    case "instagram":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect
+            x="4.25"
+            y="4.25"
+            width="15.5"
+            height="15.5"
+            rx="4.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="3.35"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          />
+          <circle cx="17.1" cy="6.9" r="1.15" fill="currentColor" />
+        </svg>
+      );
+    case "x":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M6.2 5.1h3.4l3.1 4.4 3.8-4.4h1.6l-4.7 5.5 5 8.3h-3.4l-3.4-5.4-4.4 5.4H5.6l5.3-6.4-4.7-7.4Z"
+          />
+        </svg>
+      );
+    case "tiktok":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M14.2 4.8c.6 1.5 1.8 2.6 3.4 3v2.6c-1.1-.1-2.3-.5-3.4-1.2v4.8a5 5 0 0 1-5 5 4.9 4.9 0 0 1 0-9.8c.4 0 .8 0 1.2.1v2.7a2.8 2.8 0 0 0-1.2-.3 2.4 2.4 0 1 0 2.4 2.4V4.8h2.6Z"
+          />
+        </svg>
+      );
+    case "youtube":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect
+            x="3.5"
+            y="6"
+            width="17"
+            height="12"
+            rx="4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          />
+          <path fill="currentColor" d="m10 9.4 5 2.6-5 2.6V9.4Z" />
+        </svg>
+      );
+    case "linkedin":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect
+            x="4.25"
+            y="4.25"
+            width="15.5"
+            height="15.5"
+            rx="3.8"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          />
+          <circle cx="8.2" cy="9" r="1.1" fill="currentColor" />
+          <path
+            d="M7.3 11.3v5.2"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+          />
+          <path
+            d="M11.2 16.5v-5.2h2.3c1.7 0 2.6.9 2.6 2.7v2.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 export default function ContactPage() {
   const [form, setForm] = useState<ContactFormState>(initialFormState);
@@ -315,6 +422,29 @@ export default function ContactPage() {
                   <p className="card-text">{officeAddress}</p>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div className="contact-social-footer" aria-label="Social media platforms">
+            <div className="contact-social-icon-row" role="list">
+              {socialPlatforms.map((platform) => (
+                <a
+                  key={platform.label}
+                  className="contact-social-pill"
+                  role="listitem"
+                  href={platform.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open ${platform.label} in a new tab`}
+                  title={platform.label}
+                >
+                  <div
+                    className={`contact-social-icon contact-social-icon-${platform.icon}`}
+                  >
+                    <SocialPlatformIcon icon={platform.icon} />
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </div>

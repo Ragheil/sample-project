@@ -21,7 +21,7 @@ export default function SiteLayout() {
 
       <Footer year={new Date().getFullYear()} navItems={navItems} />
       <FloatingFaqChatbot faqs={faqs} />
-      <ScrollToTopButton />
+      {/* <ScrollToTopButton /> */}
     </div>
   );
 }

@@ -607,7 +607,7 @@ const handleSubmit = async () => {
 
       <Footer year={year} navItems={navItems} />
       <FloatingFaqChatbot faqs={faqs} />
-      <ScrollToTopButton />
+      {/* <ScrollToTopButton /> */}
     </div>
   );
 }

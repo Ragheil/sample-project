@@ -60,6 +60,21 @@ export type OfficeGallerySpace = {
   photos: OfficeGalleryPhoto[];
 };
 
+export type SocialPlatformIcon =
+  | "facebook"
+  | "instagram"
+  | "x"
+  | "tiktok"
+  | "youtube"
+  | "linkedin";
+
+export type SocialPlatform = {
+  label: string;
+  icon: SocialPlatformIcon;
+  description: string;
+  href: string;
+};
+
 export const navItems: NavItem[] = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
@@ -335,6 +350,45 @@ export const officeGallerySpaces: OfficeGallerySpace[] = [
 
 export const officeFrontPhotos: OfficeGalleryPhoto[] =
   officeGallerySpaces[0]?.photos ?? [];
+
+export const socialPlatforms: SocialPlatform[] = [
+  {
+    label: "Facebook",
+    icon: "facebook",
+    description: "Announcements, highlights, and company updates.",
+    href: "https://www.facebook.com/phonipinocorp",
+  },
+  {
+    label: "Instagram",
+    icon: "instagram",
+    description: "Workplace moments, events, and visual stories.",
+    href: "https://www.instagram.com/",
+  },
+  {
+    label: "X",
+    icon: "x",
+    description: "Quick updates, notices, and short-form posts.",
+    href: "https://x.com/",
+  },
+  {
+    label: "TikTok",
+    icon: "tiktok",
+    description: "Short videos featuring the team and office culture.",
+    href: "https://www.tiktok.com/",
+  },
+  {
+    label: "YouTube",
+    icon: "youtube",
+    description: "Long-form videos, tours, and featured company content.",
+    href: "https://www.youtube.com/",
+  },
+  {
+    label: "LinkedIn",
+    icon: "linkedin",
+    description: "Professional updates, hiring posts, and company news.",
+    href: "https://www.linkedin.com/in/phonipino-corp-444255233/",
+  },
+];
 
 export const careerRoles: CareerRole[] = [
   {

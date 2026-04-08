@@ -108,7 +108,7 @@ export default function Header({ navItems }: HeaderProps) {
                 aria-label="Close navigation"
                 onClick={() => setMenuOpen(false)}
               >
-                Close
+                X
               </button>
             </div>
 
