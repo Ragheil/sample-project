@@ -4,7 +4,7 @@ import RouteScrollToTop from "../router/RouteScrollToTop";
 import FloatingFaqChatbot from "./FloatingFaqChatbot";
 import Footer from "./Footer";
 import Header from "./Header";
-import ScrollToTopButton from "./ScrollToTopButton";
+// import ScrollToTopButton from "./ScrollToTopButton";
 
 export default function SiteLayout() {
   return (

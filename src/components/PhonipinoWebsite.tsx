@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import SectionHeading from "./SectionHeading";
 import InfoCard from "./InfoCard";
 import FloatingFaqChatbot from "./FloatingFaqChatbot";
-import ScrollToTopButton from "./ScrollToTopButton";
+// import ScrollToTopButton from "./ScrollToTopButton";
 import {
   navItems,
   services,
