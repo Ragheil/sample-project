@@ -1132,12 +1132,12 @@ select {
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  min-height: 360px;
+  min-height: 450px;
 }
 
 .clean-map-frame {
   width: 100%;
-  min-height: 360px;
+  min-height: 450px;
   border: 0;
   display: block;
   filter: grayscale(0.08) contrast(1.02);
@@ -1865,7 +1865,7 @@ body.mobile-menu-open .floating-chat-window {
 
   .clean-map-wrap,
   .clean-map-frame {
-    min-height: 280px;
+    min-height: clamp(220px, 38vh, 280px);
   }
 
   .office-gallery-media-card,
