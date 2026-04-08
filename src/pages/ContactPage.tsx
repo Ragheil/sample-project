@@ -86,22 +86,22 @@ function SocialPlatformIcon({ icon }: { icon: SocialPlatform["icon"] }) {
           />
         </svg>
       );
-    case "youtube":
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect
-            x="3.5"
-            y="6"
-            width="17"
-            height="12"
-            rx="4"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-          />
-          <path fill="currentColor" d="m10 9.4 5 2.6-5 2.6V9.4Z" />
-        </svg>
-      );
+    // case "youtube":
+    //   return (
+    //     <svg viewBox="0 0 24 24" aria-hidden="true">
+    //       <rect
+    //         x="3.5"
+    //         y="6"
+    //         width="17"
+    //         height="12"
+    //         rx="4"
+    //         fill="none"
+    //         stroke="currentColor"
+    //         strokeWidth="1.8"
+    //       />
+    //       <path fill="currentColor" d="m10 9.4 5 2.6-5 2.6V9.4Z" />
+    //     </svg>
+    //   );
     case "linkedin":
       return (
         <svg viewBox="0 0 24 24" aria-hidden="true">

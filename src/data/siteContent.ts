@@ -65,7 +65,7 @@ export type SocialPlatformIcon =
   | "instagram"
   | "x"
   | "tiktok"
-  | "youtube"
+  // | "youtube"
   | "linkedin";
 
 export type SocialPlatform = {
@@ -376,12 +376,12 @@ export const socialPlatforms: SocialPlatform[] = [
     description: "Short videos featuring the team and office culture.",
     href: "https://www.tiktok.com/",
   },
-  {
-    label: "YouTube",
-    icon: "youtube",
-    description: "Long-form videos, tours, and featured company content.",
-    href: "https://www.youtube.com/",
-  },
+  // {
+  //   label: "YouTube",
+  //   icon: "youtube",
+  //   description: "Long-form videos, tours, and featured company content.",
+  //   href: "https://www.youtube.com/",
+  // },
   {
     label: "LinkedIn",
     icon: "linkedin",
