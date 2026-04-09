@@ -1,7 +1,7 @@
 import InfoCard from "../components/InfoCard";
 import PageBanner from "../components/PageBanner";
 import SectionHeading from "../components/SectionHeading";
-import { highlights } from "../data/siteContent";
+import { highlights, registrationItems } from "../data/siteContent";
 
 export default function AboutPage() {
   return (
@@ -11,7 +11,7 @@ export default function AboutPage() {
         title="A modern outsourcing partner built for service excellence and long-term growth."
         text="Phonipino Corp. supports clients with structured delivery, dependable communication, and a service model designed for modern local and global businesses."
         asideTitle="Company snapshot"
-        asideText="The company positions itself as a Philippine-based outsourcing partner with a registered presence in both the United States and the Philippines."
+        asideText="Phonipino Corp. is a Philippine-based outsourcing partner registered with the Cagayan de Oro City LGU, DTI, BIR, and SEC Philippines."
         chips={["Established 2014", "US + PH presence", "Service-first teams"]}
       />
 
@@ -26,6 +26,28 @@ export default function AboutPage() {
           <div className="card-grid two">
             {highlights.map((item) => (
               <InfoCard key={item.stat} stat={item.stat} text={item.text} icon={item.icon} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section ultra-section">
+        <div className="shell shell-wide">
+          <SectionHeading
+            eyebrow="Official Registrations"
+            title="Registered with the key Philippine government agencies that support business compliance."
+            text="These certificates show Phonipino Corp.'s local registration and corporate compliance in Cagayan de Oro City and across the Philippines."
+          />
+
+          <div className="registration-grid margin-top-lg">
+            {registrationItems.map((item) => (
+              <InfoCard
+                key={item.title}
+                title={item.title}
+                text={item.text}
+                image={item.image}
+                className="registration-card"
+              />
             ))}
           </div>
         </div>

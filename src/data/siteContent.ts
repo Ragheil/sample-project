@@ -31,6 +31,12 @@ export type ShowcaseItem = {
   image: string;
 };
 
+export type RegistrationItem = {
+  title: string;
+  text: string;
+  image: string;
+};
+
 export type TeamMember = {
   name: string;
   role: string;
@@ -144,6 +150,29 @@ export const highlights: HighlightItem[] = [
   },
 ];
 
+export const registrationItems: RegistrationItem[] = [
+  {
+    title: "Cagayan de Oro City ",
+    text: "Local government registration supporting Phonipino Corp.'s business presence in Cagayan de Oro City.",
+    image: "/lgu.jpg",
+  },
+  {
+    title: "DTI Philippines",
+    text: "Department of Trade and Industry registration reflecting compliance with Philippine business registration requirements.",
+    image: "/dti.jpg",
+  },
+  {
+    title: "BIR Philippines",
+    text: "Bureau of Internal Revenue registration documenting tax compliance and official business registration details.",
+    image: "/bir.jpg",
+  },
+  {
+    title: "SEC Philippines",
+    text: "Securities and Exchange Commission registration establishing the company's corporate registration in the Philippines.",
+    image: "/sec.jpg",
+  },
+];
+
 export const processSteps: ProcessStep[] = [
   {
     title: "Discovery",
@@ -234,6 +263,11 @@ export const teamMembers: TeamMember[] = [
     name: "ATTY. MIPPS SEMILLANO",
     role: "CHIEF FINANCE OFFICER",
     image: "/board-5.jpg",
+  },
+    {
+    name: "PAUL OSALLA",
+    role: "TRAINOR SUPERVISOR",
+    image: "/board-6.jpg",
   },
 ];
 
