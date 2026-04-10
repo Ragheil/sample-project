@@ -37,6 +37,20 @@ export type RegistrationItem = {
   image: string;
 };
 
+export type CompanyReview = {
+  category: string;
+  title: string;
+  rating: number;
+  text: string;
+  impact: string;
+};
+
+export type ImpactItem = {
+  stat: string;
+  title: string;
+  text: string;
+};
+
 export type TeamMember = {
   name: string;
   role: string;
@@ -85,6 +99,7 @@ export const navItems: NavItem[] = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Services", path: "/services" },
+  { label: "Reviews", path: "/reviews" },
   { label: "Culture", path: "/culture" },
   { label: "Leadership", path: "/leadership" },
   { label: "Why Us", path: "/why-us" },
@@ -189,6 +204,102 @@ export const processSteps: ProcessStep[] = [
   {
     title: "Optimization",
     text: "We improve delivery over time using feedback, reporting, and performance insights.",
+  },
+];
+
+export const companyReviews: CompanyReview[] = [
+  {
+    category: "Client experience",
+    title: "Responsive customer support",
+    rating: 4.5,
+    text: "Clients can expect prompt communication, steady follow-through, and support coverage that helps reduce delays in customer-facing work.",
+    impact: "Stronger day-to-day customer trust",
+  },
+  {
+    category: "Sales operations",
+    title: "Reliable outreach execution",
+    rating: 4.8,
+    text: "Sales support efforts are presented as organized and consistent, helping teams keep campaigns moving without losing momentum.",
+    impact: "More dependable revenue support",
+  },
+  {
+    category: "Lead generation",
+    title: "Consistent prospect handling",
+    rating: 4.7,
+    text: "Lead generation workflows are positioned to stay structured, giving businesses clearer follow-up and better pipeline discipline.",
+    impact: "Healthier sales pipeline flow",
+  },
+  {
+    category: "Reporting",
+    title: "Clear performance visibility",
+    rating: 4.5,
+    text: "Managers benefit from reporting that keeps quality, targets, and service performance easier to track and improve over time.",
+    impact: "Better decision-making clarity",
+  },
+  {
+    category: "Scalability",
+    title: "Flexible team expansion",
+    rating: 4.3,
+    text: "The delivery model is framed around scaling with client demand, which helps growing companies avoid service bottlenecks.",
+    impact: "Smoother growth readiness",
+  },
+  {
+    category: "Professionalism",
+    title: "Polished client-facing support",
+    rating: 4.6,
+    text: "A strong outsourcing partner needs professionalism at every touchpoint, and PHONIPINO CORP. is positioned around that expectation.",
+    impact: "Improved brand perception",
+  },
+  {
+    category: "Training",
+    title: "Operational readiness",
+    rating: 4.7,
+    text: "Training and onboarding support help teams get into production with more confidence and fewer avoidable handoff issues.",
+    impact: "Faster launch confidence",
+  },
+  {
+    category: "Coverage",
+    title: "24/7 support mindset",
+    rating: 4.8,
+    text: "Round-the-clock availability gives clients more room to serve different time zones and urgent operational needs.",
+    impact: "Wider service-hour coverage",
+  },
+  {
+    category: "Partnership value",
+    title: "Competitive service value",
+    rating: 4.7,
+    text: "Businesses looking for cost-aware support can benefit from a model that balances affordability with operational structure.",
+    impact: "Better cost-to-service balance",
+  },
+  {
+    category: "Long-term fit",
+    title: "Stable outsourcing partnership",
+    rating: 4.0,
+    text: "The overall company story emphasizes long-term support relationships rather than one-off transactions, which is valuable for retention-minded clients.",
+    impact: "More durable client relationships",
+  },
+];
+
+export const impactItems: ImpactItem[] = [
+  {
+    stat: "24/7 support",
+    title: "PHONIPINO CORP. helps clients stay available when their customers need them.",
+    text: "Always-on support coverage can reduce response gaps, protect customer experience, and give businesses more confidence in time-sensitive operations.",
+  },
+  {
+    stat: "Scalable teams",
+    title: "The company gives growing businesses a practical way to expand capacity.",
+    text: "Sales, support, and back-office teams can be extended without forcing clients to build every role internally from scratch.",
+  },
+  {
+    stat: "Local jobs",
+    title: "PHONIPINO CORP. creates work opportunities and skills growth in its community.",
+    text: "Hiring, training, and leadership development contribute to stronger career pathways for people in and around Cagayan de Oro.",
+  },
+  {
+    stat: "Stronger brands",
+    title: "Professional service delivery strengthens the reputation of the companies it supports.",
+    text: "When customer conversations are handled well, businesses protect loyalty, improve retention, and build a more credible market presence.",
   },
 ];
 

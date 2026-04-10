@@ -1515,6 +1515,114 @@ select {
   min-width: 120px;
 }
 
+/* Reviews */
+.reviews-grid {
+  display: grid;
+  gap: clamp(16px, 1.4vw, 24px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.review-card,
+.impact-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.review-card:hover,
+.impact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--panel-strong);
+}
+
+.review-card {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+}
+
+.review-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.review-card-label {
+  color: #ff9d9d;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.review-score-block {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+  flex: 0 0 auto;
+}
+
+.review-score {
+  font-size: 2.15rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.review-stars {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.12em;
+}
+
+.review-stars-base,
+.review-stars-fill {
+  white-space: nowrap;
+}
+
+.review-stars-base {
+  color: rgba(255, 255, 255, 0.16);
+}
+
+.review-stars-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  color: #ffb347;
+}
+
+.review-impact-chip,
+.impact-stat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(214, 31, 38, 0.12);
+  border: 1px solid rgba(214, 31, 38, 0.24);
+  color: #ffb0b0;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.impact-grid {
+  display: grid;
+  gap: clamp(16px, 1.4vw, 24px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.impact-card {
+  padding: 24px;
+}
+
 /* Forms */
 .form-grid {
   display: grid;
@@ -1904,7 +2012,8 @@ body.mobile-menu-open .floating-chat-window {
   .card-grid.four,
   .process-grid,
   .team-grid,
-  .career-role-grid {
+  .career-role-grid,
+  .impact-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1971,7 +2080,9 @@ body.mobile-menu-open .floating-chat-window {
   .process-grid,
   .form-grid,
   .floating-chat-input-row,
-  .career-role-grid {
+  .career-role-grid,
+  .reviews-grid,
+  .impact-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2043,9 +2154,14 @@ body.mobile-menu-open .floating-chat-window {
 
   .career-role-top,
   .map-card-header,
-  .office-showcase-top {
+  .office-showcase-top,
+  .review-card-top {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .review-score-block {
+    justify-items: start;
   }
 
   .contact-info-panel,

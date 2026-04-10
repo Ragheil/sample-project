@@ -8,6 +8,7 @@ import HomePage from "../pages/HomePage";
 import LeadershipPage from "../pages/LeadershipPage";
 import OfficeTourPage from "../pages/OfficeTourPage";
 import ProcessPage from "../pages/ProcessPage";
+import ReviewsPage from "../pages/ReviewsPage";
 import ServicesPage from "../pages/ServicesPage";
 import WhyUsPage from "../pages/WhyUsPage";
 
@@ -19,6 +20,7 @@ export default function AppRouter() {
           <Route index element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/culture" element={<CulturePage />} />
           <Route path="/leadership" element={<LeadershipPage />} />
           <Route path="/why-us" element={<WhyUsPage />} />

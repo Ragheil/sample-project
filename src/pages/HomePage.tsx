@@ -17,6 +17,12 @@ const homeLinks = [
     to: "/services",
   },
   {
+    label: "Reviews",
+    title: "Browse company reviews",
+    text: "See 10 star-rated review highlights and the positive impact of PHONIPINO CORP.",
+    to: "/reviews",
+  },
+  {
     label: "Culture",
     title: "Meet the brand culture",
     text: "Browse community work, employee recognition, and team-building moments.",
