@@ -13,6 +13,7 @@ type ChatMessage = {
 
 export default function FloatingFaqChatbot({ faqs }: FloatingFaqChatbotProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [faqPanelOpen, setFaqPanelOpen] = useState(true);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -49,6 +50,7 @@ export default function FloatingFaqChatbot({ faqs }: FloatingFaqChatbotProps) {
 
     setInput("");
     setIsOpen(true);
+    setFaqPanelOpen(false);
   };
 
   return (
@@ -116,19 +118,40 @@ export default function FloatingFaqChatbot({ faqs }: FloatingFaqChatbotProps) {
               Ask about services, hiring, office location, registration, or 24/7 support.
             </div>
 
-            <div className="floating-chat-suggestions" aria-label="Suggested questions">
-              <div className="floating-chat-suggestions-title">Frequently asked questions</div>
-              {suggestedQuestions.map((question) => (
-                <button
-                  key={question}
-                  type="button"
-                  className="floating-chat-chip"
-                  onClick={() => sendMessage(question)}
-                >
-                  {question}
-                </button>
-              ))}
-            </div>
+            <button
+              type="button"
+              className={`floating-chat-panel-toggle ${faqPanelOpen ? "is-open" : ""}`}
+              onClick={() => setFaqPanelOpen((prev) => !prev)}
+              aria-expanded={faqPanelOpen}
+              aria-controls="floating-chat-faq-list"
+            >
+              <span className="floating-chat-panel-copy">
+                <span className="floating-chat-suggestions-title">Frequently asked questions</span>
+                <span className="floating-chat-panel-meta">{faqs.length} questions</span>
+              </span>
+              <span className="floating-chat-panel-icon" aria-hidden="true">
+                {faqPanelOpen ? "x" : "+"}
+              </span>
+            </button>
+
+            {faqPanelOpen && (
+              <div
+                id="floating-chat-faq-list"
+                className="floating-chat-suggestions"
+                aria-label="Suggested questions"
+              >
+                {suggestedQuestions.map((question) => (
+                  <button
+                    key={question}
+                    type="button"
+                    className="floating-chat-chip"
+                    onClick={() => sendMessage(question)}
+                  >
+                    {question}
+                  </button> 
+                ))}
+              </div>
+            )}
 
             <div className="floating-chat-input-row">
               <input
