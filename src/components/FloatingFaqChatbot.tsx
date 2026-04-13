@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FaqItem } from "../data/phonipinoData";
+import { DEFAULT_BOT_GREETING, findFaqReply } from "../utils/faqChatbot";
 
 type FloatingFaqChatbotProps = {
   faqs: FaqItem[];
@@ -10,48 +11,29 @@ type ChatMessage = {
   text: string;
 };
 
-function findFaqReply(input: string, faqs: FaqItem[]): string {
-  const lowered = input.toLowerCase().trim();
-
-  const matched = faqs.find((faq) => {
-    const q = faq.q.toLowerCase();
-    return (
-      q.includes(lowered) ||
-      (lowered.includes("24/7") && q.includes("24/7")) ||
-      (lowered.includes("registered") && q.includes("registered")) ||
-      (lowered.includes("apply") && q.includes("apply")) ||
-      (lowered.includes("career") && q.includes("apply")) ||
-      (lowered.includes("specialize") && q.includes("specialize")) ||
-      (lowered.includes("service") && q.includes("specialize")) ||
-      (lowered.includes("philippines") && q.includes("registered")) ||
-      (lowered.includes("us") && q.includes("registered"))
-    );
-  });
-
-  if (matched) return matched.a;
-
-  return "I can help with services, company registration in the US and Philippines, 24/7 support, and careers or application questions.";
-}
-
 export default function FloatingFaqChatbot({ faqs }: FloatingFaqChatbotProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "bot",
-      text: "Hi! Ask me about Phonipino Corp., our services, support hours, registration, or careers.",
+      text: DEFAULT_BOT_GREETING,
     },
   ]);
-
-  const quickQuestions = useMemo(
-    () => [
-      "What services do you offer?",
-      "Are you registered in the US and Philippines?",
-      "Do you offer 24/7 support?",
-      "How do I apply?",
-    ],
-    []
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const suggestedQuestions = useMemo(
+    () => faqs.map((faq) => faq.q),
+    [faqs]
   );
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+  }, [isOpen, messages]);
 
   const sendMessage = (text: string) => {
     const clean = text.trim();
@@ -78,15 +60,22 @@ export default function FloatingFaqChatbot({ faqs }: FloatingFaqChatbotProps) {
         aria-label="Open chat"
       >
         <span className="floating-chat-dot" />
-        <span>Chat with us</span>
+        <span>Message us</span>
       </button>
 
       {isOpen && (
-        <div className="floating-chat-window">
+        <section className="floating-chat-window" aria-label="Phonipino FAQ Bot">
           <div className="floating-chat-header">
-            <div>
-              <div className="floating-chat-title">Phonipino FAQ Bot</div>
-              <div className="floating-chat-subtitle">Quick company answers</div>
+            <div className="floating-chat-profile">
+              <img
+                src="/logo.jpg"
+                alt="Phonipino Corp."
+                className="floating-chat-avatar"
+              />
+              <div>
+                <div className="floating-chat-title">Phonipino FAQ Bot</div>
+                <div className="floating-chat-subtitle">Typically replies instantly</div>
+              </div>
             </div>
 
             <button
@@ -99,49 +88,69 @@ export default function FloatingFaqChatbot({ faqs }: FloatingFaqChatbotProps) {
             </button>
           </div>
 
-          <div className="floating-chat-quick-list">
-            {quickQuestions.map((question) => (
-              <button
-                key={question}
-                type="button"
-                className="quick-chip"
-                onClick={() => sendMessage(question)}
-              >
-                {question}
-              </button>
-            ))}
-          </div>
+          <div className="floating-chat-messages" aria-live="polite">
+            <div className="floating-chat-day-label">Today</div>
 
-          <div className="floating-chat-messages">
             {messages.map((message, index) => (
-              <div
-                key={`${message.role}-${index}`}
-                className={`chat-message ${message.role === "user" ? "user" : "bot"}`}
-              >
-                {message.text}
+              <div key={`${message.role}-${index}`} className={`floating-chat-row ${message.role}`}>
+                {message.role === "bot" ? (
+                  <div className="floating-chat-avatar-mini" aria-hidden="true">
+                    P
+                  </div>
+                ) : null}
+
+                <div className="floating-chat-bubble-wrap">
+                  {message.role === "bot" && index === 0 ? (
+                    <div className="floating-chat-name">Phonipino FAQ Bot</div>
+                  ) : null}
+                  <div className={`floating-chat-bubble ${message.role}`}>{message.text}</div>
+                </div>
               </div>
             ))}
+
+            <div ref={messagesEndRef} />
           </div>
 
-          <div className="floating-chat-input-row">
-            <input
-              className="floating-chat-input"
-              placeholder="Ask about services, careers, registration..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") sendMessage(input);
-              }}
-            />
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => sendMessage(input)}
-            >
-              Send
-            </button>
+          <div className="floating-chat-composer">
+            <div className="floating-chat-helper">
+              Ask about services, hiring, office location, registration, or 24/7 support.
+            </div>
+
+            <div className="floating-chat-suggestions" aria-label="Suggested questions">
+              <div className="floating-chat-suggestions-title">Frequently asked questions</div>
+              {suggestedQuestions.map((question) => (
+                <button
+                  key={question}
+                  type="button"
+                  className="floating-chat-chip"
+                  onClick={() => sendMessage(question)}
+                >
+                  {question}
+                </button>
+              ))}
+            </div>
+
+            <div className="floating-chat-input-row">
+              <input
+                className="floating-chat-input"
+                placeholder="Type your message..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") sendMessage(input);
+                }}
+              />
+              <button 
+                type="button"
+                className="floating-chat-send"
+                onClick={() => sendMessage(input)}
+                disabled={!input.trim()}
+              >
+                Send
+              </button>
+            </div>
           </div>
-        </div>
+        </section>
       )}
     </>
   );

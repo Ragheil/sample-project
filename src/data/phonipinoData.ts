@@ -23,6 +23,7 @@ export type ProcessStep = {
 export type FaqItem = {
   q: string;
   a: string;
+  keywords?: string[];
 };
 
 export type ShowcaseItem = {
@@ -127,24 +128,106 @@ export const processSteps: ProcessStep[] = [
 
 export const faqs: FaqItem[] = [
   {
-    q: "What does Phonipino Corp. specialize in?",
-    a: "Phonipino Corp. specializes in sales outsourcing, lead generation, customer support, and related business process solutions.",
+    q: "What services does Phonipino Corp. offer?",
+    a: "Phonipino Corp. offers sales outsourcing, lead generation, customer support, back-office support, performance reporting, and dedicated team solutions for growing businesses.",
+    keywords: [
+      "services",
+      "offer",
+      "outsourcing",
+      "sales",
+      "lead generation",
+      "customer support",
+      "back office",
+      "reporting",
+      "dedicated team",
+    ],
   },
   {
     q: "Do you offer 24/7 support?",
-    a: "Yes. The company positions itself as a 24/7 outsourcing and support partner for growing businesses.",
+    a: "Yes. The website presents Phonipino Corp. as a 24/7 outsourcing and support partner for businesses that need dependable coverage across time zones.",
+    keywords: ["24/7", "support hours", "round the clock", "all day", "always open"],
+  },
+  {
+    q: "Where is Phonipino Corp. located?",
+    a: "The office listed on the site is in the HCL building on Kauswagan National Highway, beside Savemore, Cagayan de Oro, Philippines.",
+    keywords: ["location", "address", "office", "cagayan de oro", "kauswagan", "savemore"],
   },
   {
     q: "Where is Phonipino Corp. registered?",
     a: "This website states that Phonipino Corp. is registered in both the United States and the Philippines.",
+    keywords: [
+      "registered",
+      "registration",
+      "legal",
+      "united states",
+      "us",
+      "philippines",
+      "sec",
+      "bir",
+      "dti",
+      "lgu",
+    ],
   },
   {
-    q: "Can your services scale as a company grows?",
-    a: "Yes. The site presents flexible and scalable team solutions for startups, SMEs, and enterprise clients.",
+    q: "Can your services scale as my company grows?",
+    a: "Yes. Phonipino Corp. presents flexible team solutions for startups, SMEs, and enterprise clients, so support can grow with changing demand.",
+    keywords: ["scale", "scalable", "grow", "startup", "sme", "enterprise", "expand"],
+  },
+  {
+    q: "Do you provide dedicated teams or agents?",
+    a: "Yes. The site highlights dedicated team solutions and staffing models designed around each client's goals, workflow, and communication process.",
+    keywords: ["dedicated", "agents", "team", "staffing", "custom team", "outsourcing team"],
+  },
+  {
+    q: "What kind of businesses can work with Phonipino Corp.?",
+    a: "The company presents its services for startups, SMEs, and enterprise-level organizations that need sales, support, lead generation, or back-office help.",
+    keywords: ["businesses", "clients", "industries", "startup", "sme", "enterprise"],
+  },
+  {
+    q: "How do you launch a new client program?",
+    a: "The process shown on the site starts with discovery, then solution design, deployment, and ongoing optimization so teams can launch in a structured way.",
+    keywords: ["start", "launch", "onboarding", "deployment", "how it works", "process"],
+  },
+  {
+    q: "Do you provide reporting and performance visibility?",
+    a: "Yes. Performance reporting is one of the listed services, and the site highlights clear KPI visibility, service metrics, and growth insights.",
+    keywords: ["reporting", "kpi", "metrics", "performance", "visibility", "reports"],
+  },
+  {
+    q: "What support channels do you help with?",
+    a: "The website describes customer assistance across channels and positions the company as a partner for customer-facing and operational support work.",
+    keywords: [
+      "channels",
+      "multichannel",
+      "customer service",
+      "support channel",
+      "customer assistance",
+    ],
   },
   {
     q: "How can I apply for work?",
-    a: "Use the hiring section and email the recruitment team directly through the application button.",
+    a: "You can apply through the careers page by using the application buttons and emailing the recruitment team with your resume or CV.",
+    keywords: ["apply", "career", "job", "hiring", "recruitment", "vacancy"],
+  },
+  {
+    q: "What should I send when I apply?",
+    a: "Applicants are asked to send a resume or CV in PDF format and include their full name, desired position, and contact number in the email.",
+    keywords: ["resume", "cv", "pdf", "requirements", "what to send", "application requirements"],
+  },
+  {
+    q: "Are your jobs on-site?",
+    a: "The careers listings shown on the site describe the current openings as full-time and on-site roles.",
+    keywords: ["on-site", "onsite", "office-based", "work arrangement", "remote"],
+  },
+  {
+    q: "How can I contact Phonipino Corp.?",
+    a: "You can use the contact page form, email admin@phonipinocorp.com, call (088) 565 3995, or visit the office in Cagayan de Oro.",
+    keywords: ["contact", "email", "phone", "call", "reach", "inquiry", "admin"],
+  },
+  {
+    q: "What makes Phonipino Corp. different?",
+    a: "The site emphasizes competitive rates, trained agents, 24/7 coverage, scalable teams, a polished client-facing brand, and registered presence in both the US and the Philippines.",
+    keywords: ["different", "why choose", "advantage", "benefit", "best", "why phonipino"],
   },
 ];
 
