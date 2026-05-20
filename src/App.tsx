@@ -1,5 +1,5 @@
 import "./styles/phonipino.css";
-import AppRouter from "./router/AppRouter";
+// import AppRouter from "./router/AppRouter";
 
 // export default function App() {
 //   return <AppRouter />;
